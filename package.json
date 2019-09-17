@@ -1,6 +1,6 @@
 {
   "name": "snap-swap",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Snaps snapshots between two folders.",
   "main": "index.js",
   "scripts": {},
@@ -16,5 +16,7 @@
     "pixelmatch": "^5.0.2",
     "temp-dir": "^2.0.0",
     "uuid": "^3.3.3"
+  },"bin": {
+    "snap-swap": "./index.js"
   }
 }

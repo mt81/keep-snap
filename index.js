@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const commandLineArgs = require("command-line-args");
 const { createDiffFiles } = require("./file-utils");
 const { createServer } = require("./server");
@@ -26,4 +28,8 @@ const main = async args => {
   }
 };
 
-main(commandLineArgs(optionDefinitions));
+if (optionDefinitions.referenceSearchPath && optionDefinitions.failedSnapshotDir) {
+  main(commandLineArgs(optionDefinitions));
+} else {
+  console.log(`must specify arguments: --failedSnapshotDir|-f failed/tests/folder --referenceSearchPath|-f reference/snapshot/folder/tree`)
+}
