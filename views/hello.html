@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style type="text/css">
+      body,
+      html {
+        background-color: #222;
+      }
+
+      .container {
+        margin: 0 100px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+      .header-row {
+        margin-top: 40px;
+        padding: 20px 0;
+      }
+
+      h1 {
+        font-size: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #fff;
+      }
+
+      h2 {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #fff;
+      }
+
+      .btn.btn-primary {
+        background-color: #8222ff;
+        border-color: #8222ff;
+      }
+
+      .bg-dark {
+        background-color: #222 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- As a link -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <a class="btn btn-primary float-right" href="/done">Done</a>
+    </nav>
+    <!-- imageName, testSnap, refSnap, diffSnap -->
+    <div class="container">
+      {{#diffs}}
+      <div class="row header-row">
+        <div class="col-sm">
+          <h1>{{ imageName }}</h1>
+        </div>
+        <div class="col-sm">
+          <a href="/keep?id={{ id }}" class="btn btn-primary float-right"
+            >Keep new</a
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <h2>Reference Image</h2>
+        </div>
+        <div class="col-sm">
+          <h2>Image from tests</h2>
+        </div>
+        <div class="col-sm">
+          <h2>Diff</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <img src="/refImage?id={{id}}" />
+        </div>
+        <div class="col-sm">
+          <img src="testImage?id={{id}}" />
+        </div>
+        <div class="col-sm">
+          <img src="diffImage?id={{id}}" />
+        </div>
+      </div>
+      {{/diffs}}
+    </div>
+  </body>
+</html>

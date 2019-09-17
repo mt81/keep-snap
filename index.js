@@ -1,0 +1,29 @@
+const commandLineArgs = require("command-line-args");
+const { createDiffFiles } = require("./file-utils");
+const { createServer } = require("./server");
+const got = require("got");
+const open = require("open");
+
+const server_port = 3344;
+
+const optionDefinitions = [
+  { name: "verbose", alias: "v", type: Boolean },
+  {
+    name: "referenceSearchPath",
+    alias: "r",
+    type: String,
+    multiple: false,
+    defaultOption: true
+  },
+  { name: "failedSnapshotDir", alias: "f", type: String, multiple: false }
+];
+
+const main = async args => {
+  let diffs = createDiffFiles(args);
+  if (diffs && diffs.length) {
+    await createServer(diffs, server_port);
+    open(`http://127.0.0.1:${server_port}/`);
+  }
+};
+
+main(commandLineArgs(optionDefinitions));
