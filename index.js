@@ -28,8 +28,9 @@ const main = async args => {
   }
 };
 
-if (optionDefinitions.referenceSearchPath && optionDefinitions.failedSnapshotDir) {
-  main(commandLineArgs(optionDefinitions));
+const args = commandLineArgs(optionDefinitions)
+if (args.referenceSearchPath && args.failedSnapshotDir) {
+  main(args);
 } else {
   console.log(`must specify arguments: --failedSnapshotDir|-f failed/tests/folder --referenceSearchPath|-f reference/snapshot/folder/tree`)
 }

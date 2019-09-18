@@ -17,7 +17,7 @@ module.exports.createServer = async (diffs, port) => {
   app.set("views", __dirname + "/views");
 
   app.get("/", function(req, res) {
-    res.render("hello.html", { diffs: Object.values(db).filter(v => !!v) });
+    res.render("index.html", { diffs: Object.values(db).filter(v => !!v) });
   });
 
   app.get("/refImage", function(req, res) {
